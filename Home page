@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>EstateCore | Premium Real Estate Agency</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1e2a3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header & shadow projects (left corner) */
+    .site-header {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(0px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    /* left corner: shadow projects */
+    .shadow-projects {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+    .shadow-projects::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 42px;
+      height: 3px;
+      background: #c7a44b;
+      border-radius: 3px;
+    }
+    .shadow-projects span {
+      color: #c7a44b;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    /* navigation */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .main-nav a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2a3e;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .main-nav a:hover {
+      color: #c7a44b;
+    }
+
+    /* google sign up button (optional) */
+    .google-sign-btn {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #1f2a3e;
+      background-color: #fefefe;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .google-sign-btn i {
+      font-size: 1.2rem;
+      color: #4285F4;
+    }
+    .google-sign-btn:hover {
+      border-color: #c7a44b;
+      background: #faf8f2;
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* Hero section */
+    .hero {
+      background: linear-gradient(105deg, #f9fafc 0%, #f1f5f9 100%);
+      padding: 70px 0 80px;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 48px;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-badge {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #c7a44b;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: #0f1a24;
+    }
+    .hero-content h1 span {
+      color: #c7a44b;
+      border-bottom: 3px solid rgba(199,164,75,0.3);
+    }
+    .hero-description {
+      font-size: 1.18rem;
+      color: #334155;
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #1e2a3e;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .btn-primary:hover {
+      background: #2c3e50;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #cbd5e1;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #c7a44b;
+      color: #c7a44b;
+    }
+    .hero-image {
+      flex: 1;
+      background: #e2e8f0;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://placehold.co/600x450/edf2f7/94a3b8?text=Luxury+Estate') center/cover no-repeat;
+      background-size: cover;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background: #ffffff;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #4a5b6e;
+      max-width: 620px;
+      margin: 0 auto 56px auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 32px 24px;
+      transition: all 0.25s ease;
+      border: 1px solid #edf2f7;
+      box-shadow: 0 6px 12px -6px rgba(0,0,0,0.02);
+      text-align: center;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #e9e2d0;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+    }
+    .service-icon {
+      font-size: 2.6rem;
+      color: #c7a44b;
+      margin-bottom: 1.5rem;
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .service-card p {
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0f1722;
+      color: #e2e8f0;
+      padding: 56px 0 32px;
+      margin-top: 20px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+    .footer-brand p {
+      color: #94a3b8;
+      max-width: 260px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+    .footer-col h4 {
+      font-weight: 600;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      color: #f1f5f9;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+    .footer-col a {
+      text-decoration: none;
+      color: #cbd5e1;
+      transition: 0.2s;
+    }
+    .footer-col a:hover {
+      color: #c7a44b;
+    }
+    .footer-bottom {
+      border-top: 1px solid #1e2a3a;
+      padding-top: 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7e8b9c;
+    }
+
+    /* modal sign up (Google optional) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease;
+    }
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-card {
+      background: white;
+      max-width: 420px;
+      width: 90%;
+      border-radius: 32px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+      transform: scale(0.97);
+      transition: transform 0.2s;
+    }
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+    .modal-card i {
+      font-size: 3rem;
+      color: #4285F4;
+      margin-bottom: 16px;
+    }
+    .modal-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .mock-google-btn {
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 100px;
+      padding: 12px 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 1rem;
+      margin: 24px 0 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .mock-google-btn:hover {
+      background-color: #f8f9fa;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #5f6c80;
+      cursor: pointer;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e2a3e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      z-index: 1100;
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .toast-msg.show {
+      opacity: 1;
+    }
+
+    /* mobile adjustments */
+    @media (max-width: 780px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav ul {
+        gap: 1.2rem;
+        justify-content: flex-start;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-description {
+        max-width: 100%;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+      }
+      .hero-image {
+        min-height: 240px;
+        width: 100%;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .footer-links {
+        gap: 32px;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+      .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      .service-card {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <!-- left corner: shadow projects -->
+    <div class="shadow-projects">
+      SHADOW<span> PROJECTS</span>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Properties</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Agency</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- optional sign up with Google (button) -->
+    <button class="google-sign-btn" id="googleSignUpBtn">
+      <i class="fab fa-google"></i> Sign up with Google
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section: professionally crafted -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">✦ PRESTIGE REAL ESTATE</div>
+        <h1>Where vision meets <span>property</span> — curated estates, exceptional living.</h1>
+        <p class="hero-description">
+          Discover a new standard of luxury and trust. Our expert advisors bring you the finest homes, investment properties, and market intelligence tailored to your ambitions.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" id="exploreBtn">Explore listings</button>
+          <button class="btn-outline" id="consultBtn">Schedule consultation</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- background image handled by CSS but alt for clarity -->
+        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background: #cbd5e1; color:#334155; font-weight:500; min-height: 300px; background-image: url('https://placehold.co/600x450/e9eef3/8b9bb0?text=Modern+Villa'); background-size:cover; background-position:center; border-radius:32px;">
+          <!-- placeholder overlay only if image fails but inline style ensures cover -->
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Tailored services, <span style="color:#c7a44b;">exceptional results</span></h2>
+      <p class="section-sub">We go beyond transactions — we craft journeys. From valuation to closing, our expertise unlocks the full potential of your assets.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Luxury Listings</h3>
+          <p>Premium portfolio of villas, penthouses, and waterfront estates, each hand-selected for quality and architectural value.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Investment Advisory</h3>
+          <p>Data-driven insights, yield forecasts, and market reports to maximize ROI for residential & commercial properties.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Concierge Agency</h3>
+          <p>Full white-glove service: staging, legal support, negotiation, and after-sale property management.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-globe-americas"></i></div>
+          <h3>Global Relocation</h3>
+          <p>Seamless cross-border real estate solutions for international buyers and investors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>EstateCore Agency</h3>
+        <p>Redefining real estate through integrity, innovation, and an unwavering commitment to excellence.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#">Buy</a></li>
+            <li><a href="#">Rent</a></li>
+            <li><a href="#">Sell</a></li>
+            <li><a href="#">New developments</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Legal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">hello@estatecore.com</a></li>
+            <li><a href="#">+1 (888) 257-9000</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 EstateCore — Shadow Projects · All visions reserved. Crafted with purpose.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal for Google Sign Up (optional) -->
+<div id="googleModal" class="modal-overlay">
+  <div class="modal-card">
+    <i class="fab fa-google"></i>
+    <h3>Continue with Google</h3>
+    <p style="margin-bottom: 8px; color:#475569;">Sign up to unlock saved searches, property alerts, and VIP previews.</p>
+    <button id="mockGoogleAuthBtn" class="mock-google-btn">
+      <i class="fab fa-google"></i> Sign in with Google
+    </button>
+    <button class="close-modal" id="closeModalBtn">Cancel</button>
+  </div>
+</div>
+
+<!-- toast for demo feedback -->
+<div id="toastMsg" class="toast-msg">✨ Signed in successfully (demo flow)</div>
+
+<script>
+  (function() {
+    // DOM elements
+    const googleBtn = document.getElementById('googleSignUpBtn');
+    const modal = document.getElementById('googleModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const mockGoogleAuth = document.getElementById('mockGoogleAuthBtn');
+    const toast = document.getElementById('toastMsg');
+    
+    // helper to show toast
+    function showToast(message) {
+      toast.textContent = message || '✨ Signed in successfully (demo flow)';
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+    
+    // open modal
+    function openModal() {
+      modal.classList.add('active');
+    }
+    
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+    
+    // optional signup trigger from header
+    if (googleBtn) {
+      googleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    }
+    
+    // mock Google sign up flow - demo purpose
+    if (mockGoogleAuth) {
+      mockGoogleAuth.addEventListener('click', (e) => {
+        e.preventDefault();
+        // simulate google auth
+        closeModal();
+        showToast('✅ Welcome! You’re signed in with Google (demo)');
+        // optional: change button state
+        if (googleBtn) {
+          googleBtn.innerHTML = '<i class="fab fa-google"></i> ✓ Connected';
+          googleBtn.style.borderColor = '#c7a44b';
+          googleBtn.disabled = false;
+          // don't remove functionality, but update text
+          setTimeout(() => {
+            if(googleBtn.innerText.includes('Connected')) {
+              // keep as is, but we can let user re-open? it's fine.
+            }
+          },100);
+        }
+      });
+    }
+    
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    // close modal on overlay click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    
+    // hero buttons demo feedback (just toasts)
+    const exploreBtn = document.getElementById('exploreBtn');
+    const consultBtn = document.getElementById('consultBtn');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', () => {
+        showToast('🔍 Explore our premium listings — coming soon');
+      });
+    }
+    if (consultBtn) {
+      consultBtn.addEventListener('click', () => {
+        showToast('📅 Schedule a personal consultation with our advisors');
+      });
+    }
+    
+    // optional additional interactive: navigation smooth demo (prevent hash)
+    const allNavLinks = document.querySelectorAll('.main-nav a');
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast(`✨ Navigate to ${link.innerText} (demo interface)`);
+      });
+    });
+    
+    // footer links demo
+    const footerLinks = document.querySelectorAll('.footer-col a');
+    footerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast(`🔗 ${link.innerText} — estate resources (demo)`);
+      });
+    });
+    
+    // optional response for shadow projects? it's just text.
+    console.log('Estate Agency Home — fully responsive with Google Sign Up modal');
+  })();
+</script>
+</body>
+</html>
