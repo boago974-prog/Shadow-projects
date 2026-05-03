@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>EstateCore | Premium Real Estate Agency — Light/Dark Auto</title>
+  <title>Shadow Projects | Architectural Design & Real Estate Agency</title>
   <!-- Google Fonts & simple CSS reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 (free icons) -->
@@ -34,7 +34,7 @@
       --shadow-md: 0 6px 12px -6px rgba(0,0,0,0.02);
       --shadow-lg: 0 25px 40px -12px rgba(0,0,0,0.2);
       --accent-gold: #c7a44b;
-      --accent-gold-soft: #e9e2d0;
+      --accent-gold-soft: #faf5e6;
       --btn-primary-bg: #1e2a3e;
       --btn-primary-hover: #2c3e50;
       --input-border: #cbd5e1;
@@ -42,6 +42,7 @@
       --overlay-bg: rgba(0, 0, 0, 0.5);
       --toast-bg: #1e2a3e;
       --icon-google: #4285F4;
+      --about-bg: #f8fafc;
     }
 
     /* Dark mode (auto follow system) */
@@ -69,10 +70,11 @@
         --modal-bg: #11181c;
         --overlay-bg: rgba(0, 0, 0, 0.7);
         --toast-bg: #2d3a44;
+        --about-bg: #0f1419;
       }
       /* Additional dark overrides */
       .hero-image div {
-        background-image: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://placehold.co/600x450/1a2a3a/6b7f8f?text=Modern+Villa+Night') !important;
+        background-image: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://placehold.co/600x450/1a2a3a/8b9bb0?text=Shadow+Projects') !important;
         background-blend-mode: overlay;
       }
       .google-sign-btn {
@@ -92,19 +94,16 @@
         border-color: #c7a44b;
         color: #c7a44b;
       }
-      .service-card {
+      .service-card, .about-card {
         background: #11181c;
         border-color: #25313b;
       }
-      .service-card p {
+      .service-card p, .about-card p {
         color: #a0aec0;
       }
       .modal-card {
         background: #11181c;
         color: #e2e8f0;
-      }
-      .modal-card p {
-        color: #9ca3af;
       }
       .mock-google-btn {
         background: #1e293b;
@@ -113,9 +112,6 @@
       }
       .mock-google-btn:hover {
         background: #2d3a4a;
-      }
-      .close-modal {
-        color: #9ca3af;
       }
       .main-nav a, .mobile-nav a {
         color: #e2e8f0;
@@ -134,6 +130,9 @@
         background-clip: text;
         -webkit-background-clip: text;
       }
+      .contact-details {
+        background: #0a0f14;
+      }
     }
 
     body {
@@ -145,21 +144,19 @@
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    /* container utility */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* header & shadow projects (left corner) */
+    /* header */
     .site-header {
       background: var(--bg-header);
       box-shadow: var(--shadow-sm);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(0px);
       border-bottom: 1px solid var(--border-light);
     }
 
@@ -172,10 +169,9 @@
       gap: 16px;
     }
 
-    /* left corner: shadow projects */
     .shadow-projects {
       font-weight: 700;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       letter-spacing: -0.3px;
       background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%);
       background-clip: text;
@@ -197,11 +193,8 @@
     .shadow-projects span {
       color: var(--accent-gold);
       background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
     }
 
-    /* desktop navigation */
     .main-nav ul {
       display: flex;
       list-style: none;
@@ -219,7 +212,6 @@
       color: var(--accent-gold);
     }
 
-    /* Hamburger icon (hidden on desktop) */
     .hamburger {
       display: none;
       background: none;
@@ -227,14 +219,13 @@
       font-size: 1.8rem;
       cursor: pointer;
       color: var(--text-primary);
-      transition: color 0.2s;
       padding: 4px;
     }
     .hamburger:hover {
       color: var(--accent-gold);
     }
 
-    /* Mobile nav menu (slide from right) */
+    /* Mobile Nav */
     .mobile-nav {
       position: fixed;
       top: 0;
@@ -307,7 +298,6 @@
       visibility: visible;
     }
 
-    /* google sign up button (optional) */
     .google-sign-btn {
       background: var(--card-bg);
       border: 1px solid var(--border-light);
@@ -334,7 +324,7 @@
       transform: scale(0.98);
     }
 
-    /* Hero section */
+    /* Hero */
     .hero {
       background: linear-gradient(105deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
       padding: 70px 0 80px;
@@ -416,7 +406,6 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       min-height: 320px;
-      background: url('https://placehold.co/600x450/edf2f7/94a3b8?text=Luxury+Estate') center/cover no-repeat;
     }
     .hero-image div {
       width: 100%;
@@ -425,8 +414,50 @@
       background-size: cover;
       background-position: center;
       border-radius: 32px;
+      background-image: url('https://placehold.co/600x450/e9eef3/8b9bb0?text=Shadow+Projects+Design');
     }
-    /* dynamic image background handled by inline style + dark mode override */
+
+    /* About Section (Company Profile) */
+    .about-section {
+      padding: 80px 0;
+      background: var(--about-bg);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+    .about-card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 2rem;
+      border: 1px solid var(--card-border);
+      transition: transform 0.2s;
+    }
+    .about-card:hover {
+      transform: translateY(-4px);
+    }
+    .about-icon {
+      font-size: 2.2rem;
+      color: var(--accent-gold);
+      margin-bottom: 1.2rem;
+    }
+    .about-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .about-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .vision-quote {
+      font-style: italic;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 1.2rem;
+      margin-top: 1rem;
+    }
 
     /* Services Section */
     .services {
@@ -443,7 +474,7 @@
     .section-sub {
       text-align: center;
       color: var(--text-muted);
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto 56px auto;
     }
     .services-grid {
@@ -463,7 +494,6 @@
     .service-card:hover {
       transform: translateY(-6px);
       border-color: var(--accent-gold);
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
     }
     .service-icon {
       font-size: 2.6rem;
@@ -474,26 +504,57 @@
       font-size: 1.5rem;
       margin-bottom: 0.75rem;
       font-weight: 600;
-      color: var(--text-primary);
     }
     .service-card p {
       color: var(--text-muted);
-      line-height: 1.5;
     }
 
-    /* Footer */
+    /* Contact & Footer */
+    .contact-bar {
+      background: var(--about-bg);
+      padding: 48px 0;
+      border-top: 1px solid var(--border-light);
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .contact-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    .contact-item i {
+      font-size: 1.3rem;
+      color: var(--accent-gold);
+      width: 28px;
+    }
     .footer {
       background: var(--footer-bg);
       color: var(--footer-text);
-      padding: 56px 0 32px;
-      margin-top: 20px;
+      padding: 48px 0 32px;
     }
     .footer-inner {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 40px;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
     .footer-brand h3 {
       font-size: 1.5rem;
@@ -506,14 +567,13 @@
     }
     .footer-links {
       display: flex;
-      gap: 64px;
+      gap: 48px;
       flex-wrap: wrap;
     }
     .footer-col h4 {
       font-weight: 600;
       margin-bottom: 18px;
       font-size: 1.1rem;
-      color: #f1f5f9;
     }
     .footer-col ul {
       list-style: none;
@@ -537,7 +597,7 @@
       color: var(--footer-muted);
     }
 
-    /* modal sign up (Google optional) */
+    /* modal */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -552,7 +612,7 @@
       z-index: 1000;
       visibility: hidden;
       opacity: 0;
-      transition: 0.2s ease;
+      transition: 0.2s;
     }
     .modal-overlay.active {
       visibility: visible;
@@ -565,23 +625,7 @@
       border-radius: 32px;
       padding: 32px 28px;
       text-align: center;
-      box-shadow: 0 30px 40px rgba(0,0,0,0.3);
-      transform: scale(0.97);
-      transition: transform 0.2s;
       border: 1px solid var(--border-light);
-    }
-    .modal-overlay.active .modal-card {
-      transform: scale(1);
-    }
-    .modal-card i {
-      font-size: 3rem;
-      color: var(--icon-google);
-      margin-bottom: 16px;
-    }
-    .modal-card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      color: var(--text-primary);
     }
     .mock-google-btn {
       background: var(--card-bg);
@@ -594,23 +638,9 @@
       justify-content: center;
       gap: 12px;
       font-weight: 500;
-      font-size: 1rem;
       margin: 24px 0 16px;
       cursor: pointer;
-      transition: 0.2s;
       color: var(--text-primary);
-    }
-    .mock-google-btn:hover {
-      background: var(--accent-gold-soft);
-      border-color: var(--accent-gold);
-    }
-    .close-modal {
-      background: none;
-      border: none;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      color: var(--text-muted);
-      cursor: pointer;
     }
     .toast-msg {
       position: fixed;
@@ -621,74 +651,29 @@
       color: white;
       padding: 12px 24px;
       border-radius: 60px;
-      font-size: 0.9rem;
       z-index: 1100;
       opacity: 0;
       transition: 0.2s;
       pointer-events: none;
       white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .toast-msg.show {
-      opacity: 1;
-    }
+    .toast-msg.show { opacity: 1; }
 
-    /* responsive + hamburger */
     @media (max-width: 780px) {
-      .header-inner {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-      }
-      .main-nav {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      .hero-description {
-        max-width: 100%;
-      }
-      .hero-grid {
-        flex-direction: column-reverse;
-      }
-      .hero-image {
-        min-height: 240px;
-        width: 100%;
-      }
-      .section-title {
-        font-size: 1.9rem;
-      }
-      .footer-inner {
-        flex-direction: column;
-        gap: 32px;
-      }
-      .footer-links {
-        gap: 32px;
-      }
-      .google-sign-btn {
-        padding: 6px 16px;
-        font-size: 0.8rem;
-      }
+      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
+      .main-nav { display: none; }
+      .hamburger { display: block; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-description { max-width: 100%; }
+      .hero-grid { flex-direction: column-reverse; }
+      .section-title { font-size: 1.9rem; }
+      .contact-wrapper { flex-direction: column; align-items: flex-start; }
+      .contact-details { flex-direction: column; gap: 1rem; }
     }
     @media (max-width: 480px) {
-      .container {
-        padding: 0 20px;
-      }
-      .btn-primary, .btn-outline {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-      .service-card {
-        padding: 24px 16px;
-      }
-      .toast-msg {
-        white-space: nowrap;
-        font-size: 0.8rem;
-        padding: 10px 18px;
-      }
+      .container { padding: 0 20px; }
+      .btn-primary, .btn-outline { padding: 10px 20px; }
+      .service-card { padding: 24px 16px; }
     }
   </style>
 </head>
@@ -696,48 +681,29 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="shadow-projects">
-      SHADOW<span> PROJECTS</span>
-    </div>
-    
-    <!-- Desktop Navigation -->
+    <div class="shadow-projects">SHADOW<span> PROJECTS</span></div>
     <nav class="main-nav">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Properties</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Agency</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    
-    <button class="google-sign-btn" id="googleSignUpBtn">
-      <i class="fab fa-google"></i> Sign up with Google
-    </button>
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    <button class="google-sign-btn" id="googleSignUpBtn"><i class="fab fa-google"></i> Sign up with Google</button>
   </div>
 </header>
 
-<!-- Mobile Navigation Slide-out Panel -->
 <div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-header">
-    <button class="close-menu" id="closeMenuBtn" aria-label="Close menu">
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
+  <div class="mobile-nav-header"><button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button></div>
   <ul>
     <li><a href="#">Home</a></li>
-    <li><a href="#">Properties</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Agency</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="google-sign-btn mobile-google-btn" id="mobileGoogleSignBtn">
-    <i class="fab fa-google"></i> Sign up with Google
-  </button>
+  <button class="google-sign-btn mobile-google-btn" id="mobileGoogleSignBtn"><i class="fab fa-google"></i> Sign up with Google</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -745,31 +711,67 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">✦ PRESTIGE REAL ESTATE</div>
-        <h1>Where vision meets <span>property</span> — curated estates, exceptional living.</h1>
-        <p class="hero-description">
-          Discover a new standard of luxury and trust. Our expert advisors bring you the finest homes, investment properties, and market intelligence tailored to your ambitions.
-        </p>
+        <div class="hero-badge">✦ SHADOW PROJECTS</div>
+        <h1>Forward-thinking <span>architecture</span> & project management for modern lifestyles.</h1>
+        <p class="hero-description">Delivering customized, high-quality design-build solutions with creativity, efficiency, and precision. Your vision, expertly crafted.</p>
         <div class="hero-cta">
-          <button class="btn-primary" id="exploreBtn">Explore listings</button>
-          <button class="btn-outline" id="consultBtn">Schedule consultation</button>
+          <button class="btn-primary" id="exploreBtn">Explore projects</button>
+          <button class="btn-outline" id="consultBtn">Consult an expert</button>
         </div>
       </div>
-      <div class="hero-image">
-        <div style="background-image: url('https://placehold.co/600x450/e9eef3/8b9bb0?text=Modern+Villa'); background-size: cover; background-position: center; width:100%; height:100%; min-height:300px; border-radius:32px;"></div>
+      <div class="hero-image"><div style="background-image: url('https://placehold.co/600x450/e9eef3/8b9bb0?text=Modern+Architecture');"></div></div>
+    </div>
+  </section>
+
+  <!-- About Section with Company Profile -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon"><i class="fas fa-building"></i></div>
+          <h3>About Us</h3>
+          <p>Forward-thinking architectural design & project management firm delivering customized, high-quality design-build solutions for modern lifestyles. We combine innovation with functionality to create spaces that inspire.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>Provide end-to-end project solutions combining creativity, efficiency, and precision to bring every client's vision to life. We transform blueprints into legacy.</p>
+          <div class="vision-quote">"Where imagination meets structure"</div>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><i class="fas fa-chart-pie"></i></div>
+          <h3>Why Choose Us</h3>
+          <p>Client-focused approach with innovative, modern designs. We offer complete design & construction under one roof, plus data-driven insights to help buyers, sellers, and investors maximize value and minimize risk.</p>
+        </div>
       </div>
     </div>
   </section>
-  
-  <section class="services">
+
+  <!-- Services Section -->
+  <section id="services" class="services">
     <div class="container">
-      <h2 class="section-title">Tailored services, <span style="color:var(--accent-gold);">exceptional results</span></h2>
-      <p class="section-sub">We go beyond transactions — we craft journeys. From valuation to closing, our expertise unlocks the full potential of your assets.</p>
+      <h2 class="section-title">Our <span style="color:var(--accent-gold);">Services</span></h2>
+      <p class="section-sub">Complete design & construction under one roof, with data-driven insights to help buyers, sellers, and investors maximize value and minimize risk.</p>
       <div class="services-grid">
-        <div class="service-card"><div class="service-icon"><i class="fas fa-building"></i></div><h3>Luxury Listings</h3><p>Premium portfolio of villas and penthouses, each hand-selected for quality.</p></div>
-        <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>Investment Advisory</h3><p>Data-driven insights, yield forecasts, and market reports to maximize ROI for properties.</p></div>
-        <div class="service-card"><div class="service-icon"><i class="fas fa-handshake"></i></div><h3>Concierge Agency</h3><p>Full white-glove service: staging, legal support, negotiation, and property management.</p></div>
-        <div class="service-card"><div class="service-icon"><i class="fas fa-globe-americas"></i></div><h3>Global Relocation</h3><p>Seamless cross-border real estate solutions for international buyers and investors.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-drafting-compass"></i></div><h3>Architectural Design</h3><p>Custom residential & commercial designs blending aesthetics and functionality.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-hard-hat"></i></div><h3>Project Management</h3><p>End-to-end construction oversight, on time and within budget.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>Investment Insights</h3><p>Data-driven market analytics for buyers, sellers & investors.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-home"></i></div><h3>Design-Build</h3><p>Seamless integration from concept to completion under one roof.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info Bar -->
+  <section id="contact" class="contact-bar">
+    <div class="container contact-wrapper">
+      <div class="contact-info">
+        <h3>Let's bring your vision to life</h3>
+        <p>Reach out for consultations, partnerships, or project inquiries</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item"><i class="fas fa-envelope"></i> <span>hello@shadowprojects.com</span></div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>+267 72781279</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>P.O Box 1592, Gaborone</span></div>
       </div>
     </div>
   </section>
@@ -778,15 +780,18 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-brand"><h3>EstateCore Agency</h3><p>Redefining real estate through integrity, innovation, and commitment.</p></div>
-      <div class="footer-links"><div class="footer-col"><h4>Explore</h4><ul><li><a href="#">Buy</a></li><li><a href="#">Rent</a></li><li><a href="#">Sell</a></li><li><a href="#">New developments</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="#">About us</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Legal</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="#">hello@estae.com</a></li><li><a href="#">+267 75727299</a></li><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li></ul></div></div>
+      <div class="footer-brand"><h3>SHADOW PROJECTS</h3><p>Architectural excellence & project management for the modern era.</p></div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li></ul></div>
+        <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">hello@shadowprojects.com</a></li><li><a href="#">+267 72781279</a></li><li><a href="#">P.O Box 1592</a></li></ul></div>
+      </div>
     </div>
-    <div class="footer-bottom"><p>© 2026 EstateCore — Shadow Projects · All visions reserved. Crafted with purpose.</p></div>
+    <div class="footer-bottom"><p>© 2025 Shadow Projects — Design-build & Real Estate Intelligence. All rights reserved.</p></div>
   </div>
 </footer>
 
-<div id="googleModal" class="modal-overlay"><div class="modal-card"><i class="fab fa-google"></i><h3>Continue with Google</h3><p style="margin-bottom: 8px;">Sign up to unlock saved searches, property alerts, and VIP previews.</p><button id="mockGoogleAuthBtn" class="mock-google-btn"><i class="fab fa-google"></i> Sign in with Google</button><button class="close-modal" id="closeModalBtn">Cancel</button></div></div>
-<div id="toastMsg" class="toast-msg">✨ Signed in successfully (demo flow)</div>
+<div id="googleModal" class="modal-overlay"><div class="modal-card"><i class="fab fa-google"></i><h3>Continue with Google</h3><p>Sign up to access project insights & exclusive listings.</p><button id="mockGoogleAuthBtn" class="mock-google-btn"><i class="fab fa-google"></i> Sign in with Google</button><button class="close-modal" id="closeModalBtn">Cancel</button></div></div>
+<div id="toastMsg" class="toast-msg"></div>
 
 <script>
   (function() {
@@ -815,14 +820,14 @@
     function triggerSignUp(e) { e.preventDefault(); openModal(); if (mobileNav.classList.contains('active')) closeMobileMenu(); }
     googleBtn?.addEventListener('click', triggerSignUp);
     mobileGoogleBtn?.addEventListener('click', triggerSignUp);
-    mockGoogleAuth?.addEventListener('click', (e) => { e.preventDefault(); closeModal(); showToast('✅ Welcome! You’re signed in with Google (demo)'); if(googleBtn) { googleBtn.innerHTML = '<i class="fab fa-google"></i> ✓ Connected'; googleBtn.style.borderColor = '#c7a44b'; } if(mobileGoogleBtn) { mobileGoogleBtn.innerHTML = '<i class="fab fa-google"></i> ✓ Connected'; mobileGoogleBtn.style.borderColor = '#c7a44b'; } });
+    mockGoogleAuth?.addEventListener('click', (e) => { e.preventDefault(); closeModal(); showToast('✅ Welcome! Signed in with Google (demo)'); if(googleBtn) { googleBtn.innerHTML = '<i class="fab fa-google"></i> ✓ Connected'; googleBtn.style.borderColor = '#c7a44b'; } if(mobileGoogleBtn) mobileGoogleBtn.innerHTML = '<i class="fab fa-google"></i> ✓ Connected'; });
     closeModalBtn?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     
-    document.getElementById('exploreBtn')?.addEventListener('click', () => showToast('🔍 Explore our premium listings — coming soon'));
-    document.getElementById('consultBtn')?.addEventListener('click', () => showToast('📅 Schedule a personal consultation'));
-    document.querySelectorAll('.main-nav a, .mobile-nav a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showToast(`✨ Navigate to ${link.innerText} (demo)`); if(mobileNav.classList.contains('active')) closeMobileMenu(); }));
-    document.querySelectorAll('.footer-col a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showToast(`🔗 ${link.innerText} — resources`); }));
+    document.getElementById('exploreBtn')?.addEventListener('click', () => showToast('🔍 Explore our visionary projects — portfolio demo'));
+    document.getElementById('consultBtn')?.addEventListener('click', () => showToast('📅 Schedule a consultation with our lead architect'));
+    document.querySelectorAll('.main-nav a, .mobile-nav a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); const targetId = link.getAttribute('href'); if(targetId && targetId !== '#') { const el = document.querySelector(targetId); if(el) el.scrollIntoView({ behavior: 'smooth' }); else showToast(`✨ ${link.innerText} (demo)`); } else showToast(`✨ ${link.innerText}`); if(mobileNav.classList.contains('active')) closeMobileMenu(); }));
+    document.querySelectorAll('.footer-col a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showToast(`🔗 ${link.innerText} — contact info available`); }));
     window.addEventListener('resize', () => { if (window.innerWidth > 780 && mobileNav.classList.contains('active')) closeMobileMenu(); });
   })();
 </script>
