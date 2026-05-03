@@ -43,6 +43,7 @@
       --toast-bg: #1e2a3e;
       --icon-google: #4285F4;
       --about-bg: #f8fafc;
+      --active-link: #c7a44b;
     }
 
     /* Dark mode (auto follow system) */
@@ -71,8 +72,8 @@
         --overlay-bg: rgba(0, 0, 0, 0.7);
         --toast-bg: #2d3a44;
         --about-bg: #0f1419;
+        --active-link: #d4af5a;
       }
-      /* Additional dark overrides */
       .hero-image div {
         background-image: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://placehold.co/600x450/1a2a3a/8b9bb0?text=Shadow+Projects') !important;
         background-blend-mode: overlay;
@@ -195,6 +196,7 @@
       background: none;
     }
 
+    /* Navigation styling with active class */
     .main-nav ul {
       display: flex;
       list-style: none;
@@ -207,9 +209,24 @@
       color: var(--text-primary);
       transition: color 0.2s;
       font-size: 1rem;
+      position: relative;
     }
     .main-nav a:hover {
       color: var(--accent-gold);
+    }
+    .main-nav a.active {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+    .main-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-gold);
+      border-radius: 2px;
     }
 
     .hamburger {
@@ -272,8 +289,9 @@
       padding: 8px 0;
       border-bottom: 1px solid var(--border-light);
     }
-    .mobile-nav a:hover {
+    .mobile-nav a:hover, .mobile-nav a.active {
       color: var(--accent-gold);
+      border-bottom-color: var(--accent-gold);
     }
     .mobile-google-btn {
       margin-top: 1rem;
@@ -329,6 +347,7 @@
       background: linear-gradient(105deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
       padding: 70px 0 80px;
       border-bottom: 1px solid var(--border-light);
+      scroll-margin-top: 80px;
     }
     .hero-grid {
       display: flex;
@@ -417,11 +436,12 @@
       background-image: url('https://placehold.co/600x450/e9eef3/8b9bb0?text=Shadow+Projects+Design');
     }
 
-    /* About Section (Company Profile) */
+    /* About Section */
     .about-section {
       padding: 80px 0;
       background: var(--about-bg);
       border-bottom: 1px solid var(--border-light);
+      scroll-margin-top: 80px;
     }
     .about-grid {
       display: grid;
@@ -463,6 +483,7 @@
     .services {
       padding: 80px 0;
       background: var(--bg-body);
+      scroll-margin-top: 80px;
     }
     .section-title {
       text-align: center;
@@ -509,11 +530,12 @@
       color: var(--text-muted);
     }
 
-    /* Contact & Footer */
+    /* Contact Bar */
     .contact-bar {
       background: var(--about-bg);
       padding: 48px 0;
       border-top: 1px solid var(--border-light);
+      scroll-margin-top: 80px;
     }
     .contact-wrapper {
       display: flex;
@@ -544,6 +566,8 @@
       color: var(--accent-gold);
       width: 28px;
     }
+
+    /* Footer */
     .footer {
       background: var(--footer-bg);
       color: var(--footer-text);
@@ -597,7 +621,7 @@
       color: var(--footer-muted);
     }
 
-    /* modal */
+    /* Modal & Toast */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -684,10 +708,10 @@
     <div class="shadow-projects">SHADOW<span> PROJECTS</span></div>
     <nav class="main-nav">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#services" data-nav="services">Services</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
       </ul>
     </nav>
     <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
@@ -698,16 +722,18 @@
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-header"><button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button></div>
   <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#home" data-nav="home">Home</a></li>
+    <li><a href="#about" data-nav="about">About</a></li>
+    <li><a href="#services" data-nav="services">Services</a></li>
+    <li><a href="#contact" data-nav="contact">Contact</a></li>
   </ul>
   <button class="google-sign-btn mobile-google-btn" id="mobileGoogleSignBtn"><i class="fab fa-google"></i> Sign up with Google</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
 <main>
+  <!-- Home section anchor -->
+  <div id="home" style="scroll-margin-top: 80px;"></div>
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
@@ -723,7 +749,6 @@
     </div>
   </section>
 
-  <!-- About Section with Company Profile -->
   <section id="about" class="about-section">
     <div class="container">
       <div class="about-grid">
@@ -747,7 +772,6 @@
     </div>
   </section>
 
-  <!-- Services Section -->
   <section id="services" class="services">
     <div class="container">
       <h2 class="section-title">Our <span style="color:var(--accent-gold);">Services</span></h2>
@@ -761,7 +785,6 @@
     </div>
   </section>
 
-  <!-- Contact Info Bar -->
   <section id="contact" class="contact-bar">
     <div class="container contact-wrapper">
       <div class="contact-info">
@@ -782,7 +805,7 @@
     <div class="footer-inner">
       <div class="footer-brand"><h3>SHADOW PROJECTS</h3><p>Architectural excellence & project management for the modern era.</p></div>
       <div class="footer-links">
-        <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li></ul></div>
+        <div class="footer-col"><h4>Explore</h4><ul><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li></ul></div>
         <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">hello@shadowprojects.com</a></li><li><a href="#">+267 72781279</a></li><li><a href="#">P.O Box 1592</a></li></ul></div>
       </div>
     </div>
@@ -795,6 +818,7 @@
 
 <script>
   (function() {
+    // DOM elements
     const googleBtn = document.getElementById('googleSignUpBtn');
     const mobileGoogleBtn = document.getElementById('mobileGoogleSignBtn');
     const modal = document.getElementById('googleModal');
@@ -806,7 +830,15 @@
     const overlay = document.getElementById('overlay');
     const closeMenuBtn = document.getElementById('closeMenuBtn');
     
+    // Navigation links (both desktop & mobile)
+    const desktopNavLinks = document.querySelectorAll('.main-nav a');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    const allNavLinks = [...desktopNavLinks, ...mobileNavLinks];
+    
+    // Helper: show toast
     function showToast(msg) { toast.textContent = msg || '✨ Done'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
+    
+    // Mobile menu controls
     function openMobileMenu() { mobileNav.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeMobileMenu() { mobileNav.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
     
@@ -815,6 +847,92 @@
     overlay?.addEventListener('click', closeMobileMenu);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileNav.classList.contains('active')) closeMobileMenu(); });
     
+    // Active link highlighting and smooth scrolling
+    function setActiveLink(activeHash) {
+      let targetId = activeHash === '#home' || activeHash === '' || activeHash === '#' ? 'home' : activeHash.substring(1);
+      allNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        let linkTarget = '';
+        if (href === '#home' || href === '#' || href === '') linkTarget = 'home';
+        else if (href && href.startsWith('#')) linkTarget = href.substring(1);
+        if (linkTarget === targetId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    
+    // Scroll to section function (smooth)
+    function scrollToSection(sectionId) {
+      let targetElement;
+      if (sectionId === 'home') {
+        targetElement = document.getElementById('home') || document.querySelector('.hero');
+      } else {
+        targetElement = document.getElementById(sectionId);
+      }
+      if (targetElement) {
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
+    
+    // Handle navigation click
+    function handleNavClick(e, linkElement) {
+      e.preventDefault();
+      const href = linkElement.getAttribute('href');
+      let sectionId = 'home';
+      if (href && href !== '#home' && href !== '#' && href !== '') {
+        sectionId = href.substring(1);
+      }
+      scrollToSection(sectionId);
+      setActiveLink(href);
+      // Close mobile menu if open
+      if (mobileNav.classList.contains('active')) closeMobileMenu();
+    }
+    
+    // Attach click handlers to all nav links
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => handleNavClick(e, link));
+    });
+    
+    // Update active link on scroll (intersection observer)
+    const sections = ['home', 'about', 'services', 'contact'];
+    const sectionElements = {
+      home: document.getElementById('home') || document.querySelector('.hero'),
+      about: document.getElementById('about'),
+      services: document.getElementById('services'),
+      contact: document.getElementById('contact')
+    };
+    
+    const observerOptions = { threshold: 0.4, rootMargin: '-70px 0px -30% 0px' };
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          let hash = '#' + id;
+          if (id === 'home') hash = '#home';
+          setActiveLink(hash);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    Object.values(sectionElements).forEach(el => { if (el) observer.observe(el); });
+    
+    // Set initial active link based on current scroll position
+    setTimeout(() => {
+      let currentHash = window.location.hash || '#home';
+      if (currentHash === '') currentHash = '#home';
+      setActiveLink(currentHash);
+      if (currentHash !== '#home') {
+        const targetId = currentHash.substring(1);
+        scrollToSection(targetId);
+      }
+    }, 100);
+    
+    // Google Sign Up Modal Logic
     function openModal() { modal.classList.add('active'); }
     function closeModal() { modal.classList.remove('active'); }
     function triggerSignUp(e) { e.preventDefault(); openModal(); if (mobileNav.classList.contains('active')) closeMobileMenu(); }
@@ -824,10 +942,23 @@
     closeModalBtn?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     
+    // Hero buttons demo
     document.getElementById('exploreBtn')?.addEventListener('click', () => showToast('🔍 Explore our visionary projects — portfolio demo'));
     document.getElementById('consultBtn')?.addEventListener('click', () => showToast('📅 Schedule a consultation with our lead architect'));
-    document.querySelectorAll('.main-nav a, .mobile-nav a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); const targetId = link.getAttribute('href'); if(targetId && targetId !== '#') { const el = document.querySelector(targetId); if(el) el.scrollIntoView({ behavior: 'smooth' }); else showToast(`✨ ${link.innerText} (demo)`); } else showToast(`✨ ${link.innerText}`); if(mobileNav.classList.contains('active')) closeMobileMenu(); }));
-    document.querySelectorAll('.footer-col a').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showToast(`🔗 ${link.innerText} — contact info available`); }));
+    
+    // Footer links smooth scrolling (if they point to sections)
+    const footerInternalLinks = document.querySelectorAll('.footer-col a[href^="#"]');
+    footerInternalLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        let sectionId = href.substring(1);
+        if (sectionId === '') sectionId = 'home';
+        scrollToSection(sectionId);
+        setActiveLink(href);
+      });
+    });
+    
     window.addEventListener('resize', () => { if (window.innerWidth > 780 && mobileNav.classList.contains('active')) closeMobileMenu(); });
   })();
 </script>
